@@ -68,6 +68,12 @@
                 Manajemen Dokter
             </a>
 
+            <a href="{{ route('pasien.index') }}"
+                class="{{ $baseLink }} {{ request()->routeIs('pasien.*') ? $active : $inactive }}">
+                <i class="fas fa-bed-pulse w-4 text-center"></i>
+                Manajemen Pasien
+            </a>
+
         </div>
         @endif
 
