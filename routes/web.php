@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PasienController;
 use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\Dokter\JadwalPeriksaController;
 use App\Http\Controllers\Pasien\PoliController;
+use App\Http\Controllers\Dokter\PeriksaPasienController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,6 +40,14 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () 
     })->name('dokter.dashboard');
 
     Route::resource('jadwal-periksa', JadwalPeriksaController::class);
+    Route::get('/periksa-pasien', [PeriksaPasienController::class, 'index'])
+    ->name('periksa-pasien.index');
+
+    Route::post('/periksa-pasien', [PeriksaPasienController::class, 'store'])
+        ->name('periksa-pasien.store');
+
+    Route::get('/periksa-pasien/{id}', [PeriksaPasienController::class, 'create'])
+        ->name('periksa-pasien.create');
 });
 
 
