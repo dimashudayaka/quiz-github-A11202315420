@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\Dokter\JadwalPeriksaController;
 use App\Http\Controllers\Pasien\PoliController;
 use App\Http\Controllers\Dokter\PeriksaPasienController;
+use App\Http\Controllers\Dokter\RiwayatPasienController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +49,9 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->group(function () 
 
     Route::get('/periksa-pasien/{id}', [PeriksaPasienController::class, 'create'])
         ->name('periksa-pasien.create');
+
+    Route::get('/riwayat-pasien', [RiwayatPasienController::class, 'index'])->name('riwayat-pasien.index');
+    Route::get('/riwayat-pasien/{id}', [RiwayatPasienController::class, 'show'])->name('riwayat-pasien.show');  
 });
 
 
